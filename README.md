@@ -6,9 +6,10 @@ Repositório destinado para o projeto integrador I de Computação da Univesp. C
 ## Passo a passo
 
 ### Github
-1- Como criar conta no github
-2- Como clonar um repositório para sua máquina local/pessoal
-3- Como usar o github (checkout, pull, push, commit, add)
+1. Como criar conta no github
+2. Como clonar um repositório para sua máquina local/pessoal
+
+3. Como usar o github (checkout, pull, push, commit, add)
 
 
 ### Aplicação
