@@ -11,5 +11,8 @@ Repositório destinado para o projeto integrador I de Computação da Univesp. C
 3. Como usar o github (checkout, pull, push, commit, add)
 
 
-### Aplicação
-1- Começar o desenvolvimento
+## Estrutura da aplicação
+### Desenho da arquitetura
+
+### Diagrama de Entidade e Relacionamento (DER)
+
