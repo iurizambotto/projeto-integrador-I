@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='atividade.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="titulo">Atividades</h1>
+    <a href="{{ url_for('create_task') }}"><div class="botao botao_criar_atividade">
+        <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_criar_atividade"><a href="{{ url_for('create_task') }}" class="botao">Criar atividade</a>
+    </div></a>
+    <div class="wrapper">
+
+        {% for task, user in tasks %}
+        <div class="card atividade_atual">
+            <div class="cabecalho_card">
+                <a class="maior">{{ task.name }}</a>
+            </div>
+            <div class="corpo_card">
+                <a class="menor">
+                    {{task.description}}
+                    <br>
+                    <hr>
+                    Criado em: {{task.created_at.strftime("%d/%m/%Y")}}
+                    <br>
+                    <br>
+                    Concluído: {% if task.achieved %} Sim {% else %} Não {% endif %}<br><br>
+                    <br><br>
+                    <hr>
+                    Responsável: {{user.name}}
+                </a><br><br>
+        </div>
+    </div>
+    {% endfor %}
+    {% for task, user in tasks %}
+    <a href="{{ url_for('delete_task', id=task.id) }}"><div class="botao botao_deletar" onclick="return confirm('Tem certeza que deseja deletar?')">
+        <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_deletar"><a href="{{ url_for('delete_task', id=task.id) }}" class="botao">Excluir</a>
+    </div></a>
+    {% endfor %}
+    <a href="#"><div class="botao botao_editar">
+        <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_editar"><a href="#" class="botao">Editar</a>
+    </div></a>
+    <a href="{{ url_for('atividades') }}"><div class="botao botao_voltar">
+        <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_voltar"><a href="{{ url_for('atividades') }}" class="botao">Voltar</a>
+    </div></a>
+
+{% endblock %}
+

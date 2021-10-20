@@ -1,0 +1,236 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.column {
+    float: left;
+    padding: 10px;
+    height: 100%; /* Should be removed. Only for demonstration */
+}
+  
+.nav_bar {
+    position: relative;
+    display: block;
+    align-items: center;
+    width: 25%;
+    background-color: #FAE08E;
+}
+
+.content_area {
+  width: 75%;
+  background-color: #EAEAEA;
+}
+
+/* Clear floats after the columns */
+  /* .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }  */
+ 
+.logo {
+    display: flex;
+    width: 100%;
+    position: relative;
+    top: 10%;
+}
+
+.saudacao {
+  /* display: inline; */
+  position: relative;
+  top: 12%;
+  margin-left: 20px;
+  margin-right: auto;
+}
+
+p.ainda_nao_possui_conta {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: 50%;
+  font-size: 20px;
+  text-align: center;
+}
+
+/* TODOS BOTOES */
+div.botao {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding-left: 15px;
+  padding-top: 5px;
+  border-style: solid;
+  border-width: 1px;
+  height: 50px;
+  width: 80%;
+  background: #FAE08E;
+}
+
+div.botao:hover {
+  background-color: #DEB93E;
+  transform: scale(1.2);
+}
+
+a.botao {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  text-decoration: none;
+  color: black;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  align-items: center;
+  text-align: center;
+  margin: -5% 0 0 0;
+}
+
+/* BOTOES SEPARADOS */
+/* NAO LOGADO*/
+div.botao_criar_conta {
+  position: relative;
+  top: 50%;
+}
+
+img.botao_criar_conta {
+  position: relative;
+  top: 10%;
+  line-height: 21px;
+  align-items: center;
+  text-align: center;
+}
+
+/*LOGADO*/
+div.botao_home {
+  display: block;
+  position: relative;
+  top: 15%;
+}
+
+img.botao_home {
+  position: relative;
+  top: 10%;
+  line-height: 21px;
+  align-items: center;
+  text-align: center;
+}
+
+div.botao_atividades {
+  position: relative;
+  top: 15%;
+}
+
+img.botao_atividades {
+  position: relative;
+  top: 10%;
+  line-height: 21px;
+  align-items: center;
+  text-align: center;
+}
+
+div.botao_metas {
+  position: relative;
+  top: 15%;
+}
+
+img.botao_metas {
+  position: relative;
+  top: 10%;
+  line-height: 21px;
+  align-items: center;
+  text-align: center;
+}
+
+div.botao_relatorios {
+  position: relative;
+  top: 15%;
+}
+
+img.botao_relatorios {
+  position: relative;
+  top: 10%;
+  line-height: 21px;
+  align-items: center;
+  text-align: center;
+}
+
+div.botao_meu_perfil {
+  position: relative;
+  top: 25%;
+}
+
+img.botao_meu_perfil {
+  position: relative;
+  top: 10%;
+  line-height: 21px;
+  align-items: center;
+  text-align: center;
+}
+
+div.botao_meu_time {
+  position: relative;
+  top: 25%;
+}
+
+img.botao_meu_time {
+  position: relative;
+  top: 10%;
+  line-height: 21px;
+  align-items: center;
+  text-align: center;
+}
+
+div.botao_sair {
+  position: relative;
+  top: 40%;
+}
+
+img.botao_sair {
+  position: relative;
+  top: 10%;
+  line-height: 21px;
+  align-items: center;
+  text-align: center;
+}
+
+/* CARDS */
+.card {
+  position: relative;
+  width: 80%;
+  min-height: 220px;
+  max-height: 90%;
+  margin: auto;
+  margin-bottom: 10%;
+  text-align: left;
+  font-family: arial;
+  background-color: #FFFFFF;
+}
+
+.cabecalho_card{
+  display: block;
+  padding-top: 5px;
+  background-color: #FAE08E;
+  width: 100%;
+  height: 15%;
+  text-align: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.corpo_card {
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 5px;
+}

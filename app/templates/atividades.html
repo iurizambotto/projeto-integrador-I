@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='atividades.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="titulo">Atividades {% if 'concluidas' not in url %} pendentes {% else %} concluídas {% endif %}</h1>
+    <a href="{{ url_for('create_task') }}"><div class="botao botao_criar_atividade">
+        <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_criar_atividade"><a href="{{ url_for('create_task') }}" class="botao">Criar atividade</a>
+    </div></a>
+    <div class="wrapper">
+        
+        {% for task, user in tasks %}
+        <div class="card atividade_atual">
+            <div class="cabecalho_card">
+                <a class="maior">{{ task.name }}</a><br>
+            </div>
+            <div class="corpo_card">
+                <a class="menor">
+                    {{task.description}}
+                    <br>
+                    <br>
+                    Criado em: {{task.created_at.strftime("%d/%m/%Y")}}
+                    <br>
+                    <br>
+                    <!-- Pronto? {{task.achieved}}<br><br> -->
+                    <a href="{{ url_for('atividade', id=task.id) }}">Ver atividade</a>
+                    <hr>
+                    Responsável: {{user.name}}
+                </a><br><br>
+        </div>
+    </div>
+        {% endfor %}
+        {% if 'concluidas' not in url %}
+        <a href="concluidas"><div class="botao botao_voltar">
+            <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_voltar"><a href="concluidas" class="botao">Ver concluídas</a>
+        </div></a>
+        {% else %}
+        <a href="{{ url_for('atividades') }}"><div class="botao botao_voltar">
+            <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_voltar"><a href="{{ url_for('atividades') }}" class="botao">Voltar</a>
+        </div></a>
+        {% endif %}
+    
+
+{% endblock %}
+

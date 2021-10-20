@@ -1,0 +1,6 @@
+[default]
+SECRET_KEY = 'secret-test'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///storage.db'
+RECAPTCHA_PUBLIC_KEY = 'teste'
+FLASK_ADMIN_SWATCH = 'cerulean'
+[production]

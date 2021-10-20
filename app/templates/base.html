@@ -1,0 +1,59 @@
+<html>
+<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+{% block style %}{% endblock %}
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% if title %}
+        <title>{{ title }} - API</title>
+        {% else %}
+        <title>API</title>
+        {% endif %}
+    </head>
+    <body>
+        <div class="row">
+        <div class="column nav_bar">
+            <img src="{{ url_for('static', filename='icons/logo.png') }}" class="logo">
+
+            {% if not current_user.is_authenticated() %}
+            <p class="ainda_nao_possui_conta">Ainda não possui uma conta?</p>
+            <a href="{{ url_for('create_user') }}"><div class="botao botao_criar_conta">
+                <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_criar_conta"><a href="{{ url_for('create_user') }}" class="botao">Criar uma conta</a>
+            </div></a>
+            {% elif current_user.is_authenticated() %}
+            <h3 class="saudacao">Olá, {{ current_user.name }}</h3>
+            <a href="{{ url_for('homepage') }}"><div class="botao botao_home">
+                <img src="{{ url_for('static', filename='icons/diary.png') }}" class="botao botao_home"><a href="{{ url_for('homepage') }}" class="botao">Página inicial</a>
+            </div></a>
+            <br>
+            <a href="{{ url_for('atividades') }}"><div class="botao botao_atividades">
+                <img src="{{ url_for('static', filename='icons/diary.png') }}" class="botao botao_atividades"><a href="{{ url_for('atividades') }}" class="botao">Atividades</a>
+            </div></a>
+            <br>
+            <a href="{{ url_for('metas') }}"><div class="botao botao_metas">
+                <img src="{{ url_for('static', filename='icons/crosshair.png') }}" class="botao botao_metas"><a href="{{ url_for('metas') }}" class="botao">Metas</a>
+            </div></a>
+            <br>
+            <a href="{{ url_for('relatorios') }}"><div class="botao botao_relatorios">
+                <img src="{{ url_for('static', filename='icons/bar.png') }}" class="botao botao_relatorios"><a href="{{ url_for('relatorios') }}" class="botao">Relatórios</a>
+            </div></a>
+            <br>
+            <a href="{{ url_for('my_profile') }}"><div class="botao botao_meu_perfil">
+                <img src="{{ url_for('static', filename='icons/user.png') }}" class="botao botao_meu_perfil"><a href="{{ url_for('my_profile') }}" class="botao">Meu perfil</a>
+            </div></a>
+            <br>
+            <a href="#"><div class="botao botao_meu_time">
+                <img src="{{ url_for('static', filename='icons/users.png') }}" class="botao botao_meu_time"><a href="#" class="botao">Meu time</a>
+            </div></a>
+            <br>
+            <a href="{{ url_for('homepage') }}"><div class="botao botao_sair">
+                <img src="{{ url_for('static', filename='icons/logout.png') }}" class="botao botao_sair"><a href="{{ url_for('get_logout') }}" class="botao">Sair</a>
+            </div></a>
+            <br>
+            {% endif %}
+        </div>
+        <div class="column content_area">
+        {% block content %}{% endblock %}
+        </div>
+        </div>
+</body>
+</html>
