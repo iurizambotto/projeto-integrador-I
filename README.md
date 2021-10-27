@@ -34,7 +34,9 @@ Repositório destinado para o projeto integrador I de Computação da Univesp. C
 
 
 FONTES:
+
 [1] https://digitalinnovation.one/artigos/como-fazer-login-corretamente-no-github-pelo-terminal
+
 [2] https://docs.github.com/pt/github-ae@latest/repositories/creating-and-managing-repositories/cloning-a-repository
 
 #### Como usar o Github
