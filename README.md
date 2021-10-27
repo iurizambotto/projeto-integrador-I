@@ -39,10 +39,9 @@ Repositório destinado para o projeto integrador I de Computação da Univesp. C
 
 
 #### Como usar o Github
-1. Branches - git checkout
-2. Commits - git commit -m "resumo do seu commit"
-3. Pull e push - git pull e git push
-4. Pull requests
+##### Pull
+O comando pull é utilizado para PUXAR/TRAZER os dados que estão no repositório para a sua máquina:
+`git pull origin main`
 
 ##### Branches
 As branches (ramos) são as diferentes RAMIFICAÇÕES que um repositório tem. Por exemplo, por padrão todos repositório contém PELO MENOS uma branch, no nosso caso, é a branch MAIN, ou seja, a branch principal que conterá os códigos da aplicação.
@@ -53,9 +52,13 @@ O ideal aqui, seria cada um de nós ter sua própria branch, e para criar uma br
 
 Executando este comando você já estará nesta sua branch nova.
 
-###### Commits
+##### Commits
 Após fazer algumas alterações no código da sua branch, você precisará COMMITAR, ou seja, ENVIAR esses dados para o repositório do Github, para isso, use:
 `git commit -m "digite aqui o resumo das suas alteracoes"`
+
+##### Push
+
+##### Pull requests (PR)
 
 ## Estrutura da aplicação
 ### Estrutura dos diretórios
