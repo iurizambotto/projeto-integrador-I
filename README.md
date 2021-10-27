@@ -91,3 +91,5 @@ FONTES:
 [1] https://digitalinnovation.one/artigos/como-fazer-login-corretamente-no-github-pelo-terminal
 
 [2] https://docs.github.com/pt/github-ae@latest/repositories/creating-and-managing-repositories/cloning-a-repository
+
+[3] https://mbeck.com.br/blog/info/tecnologia/estruturando-aplicacoes-maiores-microframework-flask
