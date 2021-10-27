@@ -27,7 +27,8 @@ Repositório destinado para o projeto integrador I de Computação da Univesp. C
    ```
 
 4. Clonar o repositório [2]:
-    git clone https://Github.com/iurizambotto/projeto-integrador-I.git
+
+    `git clone https://Github.com/iurizambotto/projeto-integrador-I.git`
     
     OU
     
