@@ -28,8 +28,12 @@ Repositório destinado para o projeto integrador I de Computação da Univesp. C
 
 4. Clonar o repositório [2]:
     git clone https://Github.com/iurizambotto/projeto-integrador-I.git
+    
     OU
-    "OPEN WITH Github DESKTOP" (IMAGEM)
+    
+    "OPEN WITH Github DESKTOP" 
+    ![image](https://user-images.githubusercontent.com/51412949/139102667-9cde37ef-43d6-455b-a54d-7ec8dba7078c.png)
+   
 5. Verifique se as pastas/arquivos do repositório estão na sua máquina e pronto.
 
 
