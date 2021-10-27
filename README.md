@@ -1,3 +1,4 @@
+
 #  Projeto Integrador I
 ### Univesp - 03/2021 - SCS
 Repositório destinado para o projeto integrador I de Computação da Univesp. Cujo grupo é formado por integrantes do Campus SCS.
@@ -20,9 +21,10 @@ Repositório destinado para o projeto integrador I de Computação da Univesp. C
    - Clique em Generate Token.
    - Agora copie seu token e execute os próximos comandos no terminal:
    
-   `git config --global user.name "seu username"
-   
-   git config --global user.password "token gerado"`
+   ```
+   git config --global user.name "seu username"
+   git config --global user.password "token gerado"
+   ```
 
 4. Clonar o repositório [2]:
     git clone https://Github.com/iurizambotto/projeto-integrador-I.git
@@ -32,9 +34,7 @@ Repositório destinado para o projeto integrador I de Computação da Univesp. C
 
 
 FONTES:
-
 [1] https://digitalinnovation.one/artigos/como-fazer-login-corretamente-no-github-pelo-terminal
-
 [2] https://docs.github.com/pt/github-ae@latest/repositories/creating-and-managing-repositories/cloning-a-repository
 
 #### Como usar o Github
