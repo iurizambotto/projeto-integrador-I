@@ -64,19 +64,31 @@ Após fazer algumas alterações no código da sua branch, você precisará COMM
 ### Estrutura dos diretórios
 
 #### blueprint
+Nesta pasta encontram-se os arquivos PYTHON que definirão as ROTAS da API, ou seja, as views no sistema MVC.
+
+Atualmente só temos UM ARQUIVO de view, e neste arquivo temos muitas LÓGICAS DE NEGÓCIO, uma das tarefas que temos é retirar os códigos que contém lógicas de negócio e mover para a pasta de CONTROLLERs.
 
 #### controllers
+Aqui deveriam estar os ARQUIVOS PYTHON referente às lógicas de negócio, ou seja, todo o CRUD (create, read, update e delete) de usuários, atividades e meta deveria estar nessa pasta. Por isso precisamos pegar as funções que estão em views.py e transferir para cá para seu devido arquivo.
 
-#### exetensions
+#### extensions
+Nesta pasta estão arquivos PADRÃO da aplicação, alguns deles são EXTENSÕES, como por exemplo o que define o BANCO DE DADOS (database.py)
 
 #### forms
+Todos formulários que forem criados na aplicação - por exemplo, o de LOGIN - deverá ter um arquivo .PY nesta pasta. E nele será definido uma classe do WTForms com seus respectivos campos e tipos.
 
 #### models
+Aqui estão definidos os MODELOS DE DADOS, como estamos utilizando o SQL Alchemy, o Flask oferece uma abordagem para facilitar a criação das tabelas e do banco de dados como um todo.
+
+Então aqui definimos as tabelas existentes, com seus respectivos campos e relacionamentos.
 
 #### static
+Esta pasta é um diretório padrão para os arquivos de ESTILO (css), ou seja, toda estética da nossa aplicação será definida nessa pasta.
 
 #### templates
+Aqui estarão os arquivos .HTML, ou seja, os principais arquivos para uma aplicação web.
 
+Com o Flask, podemos criar um ARQUIVO BASE, e extender os próximos com base neste primeiro.
 
 ### Desenho da arquitetura
 
