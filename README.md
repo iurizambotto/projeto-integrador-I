@@ -21,6 +21,7 @@ Repositório destinado para o projeto integrador I de Computação da Univesp. C
    - Agora copie seu token e execute os próximos comandos no terminal:
    
    `git config --global user.name "seu username"
+   
    git config --global user.password "token gerado"`
 
 4. Clonar o repositório [2]:
