@@ -38,12 +38,6 @@ Repositório destinado para o projeto integrador I de Computação da Univesp. C
 5. Verifique se as pastas/arquivos do repositório estão na sua máquina e pronto.
 
 
-FONTES:
-
-[1] https://digitalinnovation.one/artigos/como-fazer-login-corretamente-no-github-pelo-terminal
-
-[2] https://docs.github.com/pt/github-ae@latest/repositories/creating-and-managing-repositories/cloning-a-repository
-
 #### Como usar o Github
 1. Branches - git checkout
 2. Commits - git commit -m "resumo do seu commit"
@@ -73,3 +67,12 @@ FONTES:
 
 ### Diagrama de Entidade e Relacionamento (DER)
 
+
+
+
+
+FONTES:
+
+[1] https://digitalinnovation.one/artigos/como-fazer-login-corretamente-no-github-pelo-terminal
+
+[2] https://docs.github.com/pt/github-ae@latest/repositories/creating-and-managing-repositories/cloning-a-repository
