@@ -48,7 +48,7 @@ As branches (ramos) são as diferentes RAMIFICAÇÕES que um repositório tem. P
 Porém quando usamos ramificações, podemos fazer ALTERAÇÕES no código SEM IMPACTAR na branch principal, ou seja, caso as alterações estejam corretas, nós iremos MERGEAR a branch que foi alterada para a branch main.
 
 O ideal aqui, seria cada um de nós ter sua própria branch, e para criar uma branch, execute o comando:
-`git branch -b nome_da_sua_branch`
+`git checkout -b nome_da_sua_branch`
 
 Executando este comando você já estará nesta sua branch nova.
 
