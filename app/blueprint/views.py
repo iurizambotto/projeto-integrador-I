@@ -11,6 +11,7 @@ from app.forms.create_goal_form import CreateGoalForm
 from app.forms.create_task_form import CreateTaskForm
 from app.controllers.users import *
 
+# Teste
 
 def init_app(app):
     app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=5)
