@@ -31,18 +31,27 @@
             <div class="cabecalho_card">
                 <a class="maior">Meta atual</a><br>
             </div>
+            {% for goal, user_goal, user, users_team in current_goal %}
             <div class="corpo_card">
-                <a class="menor"><br>Ter 50% de redução de custos nos próximos 2 meses</a><br><br>
-        </div>
+                <a class="menor"><br>{{goal.name}}
+                    <br>
+                    <br>
+                    {{goal.description}}
+                    <br>
+                    <br>
+                    <!-- Pronto? {{goal.achieved}}<br><br> -->
+                    <a href="{{ url_for('view_goal', id=goal.id) }}">Ver meta</a></a><br><br>
+            </div>
+            {% endfor %}
         </div>
         <div class="card">
             <div class="cabecalho_card">
                 <a class="maior">Atividades</a><br>
             </div>
             <div class="corpo_card">
-                <span class="numero">3
+                <span class="numero">{{tasks_pending}}
                 <a><br>Pendentes</a></span><br>
-                <span class="numero">2
+                <span class="numero">{{achieved_today}}
                 <a><br>Concluídas hoje</a></span>
         </div><br>
         </div>

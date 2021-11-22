@@ -13,6 +13,15 @@
   </div>
 
   <div class="container">
+      <label for="name"><b>Nome</b></label>
+      {{ form.name() }}<br>
+      {% if form.name.errors %}
+      {% for error in form.name.errors %}
+      <span style="color: red;">[{{ error }}]</span><br>
+      {% endfor %}
+      {% endif %}
+      <br>
+  
       <label for="email"><b>Email</b></label>
       {{ form.email() }}<br>
       {% if form.email.errors %}
@@ -22,14 +31,6 @@
       {% endif %}
       <br>
       
-      <label for="username"><b>Nome de usuário</b></label>
-      {{ form.username() }}<br>
-      {% if form.username.errors %}
-      {% for error in form.username.errors %}
-      <span style="color: red;">[{{ error }}]</span><br>
-      {% endfor %}
-      {% endif %}
-      <br>
 
       <label for="password"><b>Senha</b></label>
       {{ form.password() }}<br>
@@ -49,20 +50,20 @@
       {% endif %}
       <br>
 
-      <label for="name"><b>Nome</b></label>
-      {{ form.name() }}<br>
-      {% if form.name.errors %}
-      {% for error in form.name.errors %}
+      <label for="role"><b>Cargo</b></label>
+      {{ form.role() }}<br>
+      {% if form.role.errors %}
+      {% for error in form.role.errors %}
       <span style="color: red;">[{{ error }}]</span><br>
       {% endfor %}
       {% endif %}
       <br>
 
-      <label for="age"><b>Idade</b></label>
-      {{ form.age() }}<br>
-      {% if form.age.errors %}
-      {% for error in form.age.errors %}
-      <span style="color: red;">[{{ error }}]</span>
+      <label for="function"><b>Função</b></label>
+      {{ form.function() }}<br>
+      {% if form.function.errors %}
+      {% for error in form.function.errors %}
+      <span style="color: red;">[{{ error }}]</span><br>
       {% endfor %}
       {% endif %}
       <br>
@@ -81,5 +82,4 @@
   </div>
 </form>
 {% endblock %}
-
 

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='create_user.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<form  action="" method="post" novalidate>
+  {{ form.hidden_tag() }}
+  <div class="imgcontainer">
+    <h1 class="logintitle">Novo funcionário para o time</h1>
+  </div>
+
+  <div class="container">
+      <label for="username"><b>Usuário</b></label><p>
+      {{ form.user_id() }}<br><br>
+      
+      {{ form.submit }}
+  </div>
+</form>
+{% endblock %}
+
+

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='atividade.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="titulo">Meta</h1>
+    <a href="{{ url_for('create_goal') }}"><div class="botao botao_criar_atividade">
+        <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_criar_atividade"><a href="{{ url_for('create_goal') }}" class="botao">Criar atividade</a>
+    </div></a>
+    <div class="wrapper">
+
+        {% for goal, user in goals %}
+        <div class="card atividade_atual">
+            <div class="cabecalho_card">
+                <a class="maior">{{ goal.name }}</a>
+            </div>
+            <div class="corpo_card">
+                <a class="menor">
+                    Descrição: {{goal.description}}
+                    <br>
+                    <hr>
+                    Criado em: {{goal.created_at.strftime("%d/%m/%Y %H:%M:%S")}}
+                    <br>
+                    <hr>
+                    Responsável: {{user.name}}
+                </a><br>
+        </div>
+    </div>
+    {% endfor %}
+    {% for goal, user in goals %}
+    <a href="{{ url_for('delete_goal', id=goal.id) }}"><div class="botao botao_deletar" onclick="return confirm('Tem certeza que deseja deletar?')">
+        <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_deletar"><a href="{{ url_for('delete_goal', id=goal.id) }}" class="botao">Excluir</a>
+    </div></a>
+    <a href="{{ url_for('edit_goal', id=goal.id) }}"><div class="botao botao_editar">
+        <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_editar"><a href="{{ url_for('edit_goal', id=goal.id) }}" class="botao">Editar</a>
+    </div></a>
+    <a href="{{ url_for('metas') }}"><div class="botao botao_voltar">
+        <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_voltar"><a href="{{ url_for('metas') }}" class="botao">Voltar</a>
+    </div></a>
+    {% endfor %}
+
+{% endblock %}
+

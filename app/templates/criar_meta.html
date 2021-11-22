@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='create_user.css') }}">
+<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+{% endblock %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+{% block content %}
+
+<form  action="" method="post" novalidate>
+  {{ form.hidden_tag() }}
+  <div class="imgcontainer">
+    <h1 class="logintitle">Nova meta</h1>
+  </div>
+
+  <div class="container">
+      <label for="email" ><b>Nome da meta</b></label>
+      {{ form.name() }}<br>
+      {% if form.name.errors %}
+      {% for error in form.name.errors %}
+      <span style="color: red;">[{{ error }}]</span><br>
+      {% endfor %}
+      {% endif %}
+      <br>
+      
+      <label for="description"><b>Descrição</b></label>
+      <textarea name="description" id="description" placeholder="Descreva a atividade" cols="30" rows="5"></textarea><br>
+      {% if form.description.errors %}
+      {% for error in form.description.errors %}
+      <span style="color: red;">[{{ error }}]</span><br>
+      {% endfor %}
+      {% endif %}
+      <br>
+
+      <label for="users"><b>Usuários relacionados</b></label><br>
+      {{ form.users(rows=5, cols=30) }}
+      <p>* Utilize a tecla CTRL para selecionar mais de um</p>
+      {{ form.submit }}
+  </div>
+</form>
+{% endblock %}
+
+

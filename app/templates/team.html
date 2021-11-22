@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='time.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="titulo">Meu time</h1>
+    <a href="{{ url_for('create_new_relationship') }}"><div class="botao botao_criar_relacionamento">
+        <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_criar_relacionamento"><a href="{{ url_for('create_new_relationship') }}" class="botao">Adicionar funcionário</a>
+    </div></a>
+    <div class="wrapper">
+    {% for users_team, user in users %}
+        <div class="meu_time">
+            <h2>Funcionário: {{user.name}}</h2>
+            <h3>email: {{user.email}} | cargo: {{user.role}}</h3>
+            <hr>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

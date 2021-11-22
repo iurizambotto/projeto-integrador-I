@@ -11,10 +11,10 @@
         <div class="imgcontainer">
         </div>
         <div class="container">
-            <label for="username"><b>Email</b></label>
-            {{ form.username(placeholder="exemplo@exemplo.com") }}
-            {% if form.username.errors %}
-            {% for error in form.username.errors %}
+            <label for="email"><b>Email</b></label>
+            {{ form.email(placeholder="exemplo@exemplo.com") }}
+            {% if form.email.errors %}
+            {% for error in form.email.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
             <br>

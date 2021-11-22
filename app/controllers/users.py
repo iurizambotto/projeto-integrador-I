@@ -25,10 +25,10 @@ def get_user(id):
 
 def add_user(form):
     content = {
-        "username": form.username.data,
         "name": form.name.data,
         "email": form.email.data,
-        "age": form.age.data
+        "role": form.role.data,
+        "function": form.function.data,
     }
 
     user = Users(**content)
@@ -75,9 +75,9 @@ def delete_all():
 
 def user_login(form):
     content = {
-        "username": form.username.data
+        "email": form.email.data
     }
-    user = Users.query.filter(Users.username == form.username.data).one_or_none()
+    user = Users.query.filter(Users.email == form.email.data).one_or_none()
 
     if not user:
         abort(404)

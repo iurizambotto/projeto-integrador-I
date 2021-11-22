@@ -1,6 +1,31 @@
 {% extends "base.html" %}
 
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='time.css') }}">
+{% endblock %}
+
 {% block content %}
+    <h1 class="titulo">Meu perfil</h1>
+
     <h1>{{user.name}}</h1>
-    <h2>email: {{user.email}} | age: {{user.age}}</h2>
+    <!-- <h2>email: {{user.email}}</h2> -->
+    <!-- <age: {{user.age}}</h2> -->
+
+    <table>
+        <tr>
+          <td>E-mail</td>
+          <td>{{user.email}}</td>
+          <td></td>
+       </tr>
+       <tr>
+         <td>Cargo</td>
+         <td>{{user.role}}</td>
+       </tr>
+       <tr>
+         <td>Função</td>
+         <td>{{user.function}}</td>
+       </tr>
+      </table>
+      
+
 {% endblock %}
