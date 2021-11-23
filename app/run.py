@@ -1,6 +1,6 @@
 from app import app as application
 
-# if __name__ == '__main__':
-#     app.run()
+if __name__ == '__main__':
+    app.run()
 
-app = application
+# app = application.run()
