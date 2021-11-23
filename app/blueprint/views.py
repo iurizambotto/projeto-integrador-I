@@ -113,6 +113,7 @@ def init_app(app):
 
         current_goal = db.session.query(Goal, UsersGoals, Users, UsersTeams).filter(
                 Goal.id == UsersGoals.goal_id,
+                Goal.achieved == False,
                 UsersTeams.manager_id == current_user.id,
                 UsersGoals.user_id == Users.id,
             ).order_by(Goal.created_at.desc()).limit(1)
@@ -263,20 +264,51 @@ def init_app(app):
 
         return redirect(url_for('atividades'))
     
+    @app.route('/api/metas/concluidas/', methods=['GET', 'POST'])
     @app.route('/api/metas/', methods=['GET', 'POST'])
     @login_required
     def metas():
-        goals = db.session.query(Goal).order_by(Goal.id.desc()).limit(6)
-            # .filter(
-                # Goal.user_id == current_user.id,
-                # Goal.user_id == Users.id,
-            # ).order_by(Goal.id.desc()).limit(6)
+        achieved = False
 
-        return render_template('metas.html', goals=goals)
+        if 'concluidas' in request.url:
+            achieved = True
+    
+        # SEPARAR SE OS CARAS SAO GESTORES OU NAO PARA FILTRAR AS METAS DE CADA UM (GESTOR VE DO TIME TODO)
+        users_team = db.session.query(UsersTeams).filter(
+                UsersTeams.manager_id == current_user.id,
+            )
+        is_manager = [userteam.id for userteam in users_team]
+
+        if is_manager:
+            # PEGA TODAS GOALS DO TIME
+            team_users = [current_user.id]+ [user_team.employee_id for user_team in users_team]
+            print(team_users)
+            goals = db.session.query(Goal, UsersGoals, Users, UsersTeams).filter(
+                            Goal.id == UsersGoals.goal_id,
+                            Goal.achieved == achieved,
+                            UsersGoals.user_id.in_(team_users),
+                        ).with_entities(Goal.id, Goal.name, Goal.description, Goal.achieved, Users.name).order_by(Goal.created_at.desc()).distinct().limit(6)
+
+        else:
+            # PEGA SÓ AS GOALS DO USUÁRIO
+            goals = db.session.query(Goal, UsersGoals, Users, UsersTeams).filter(
+                            Goal.id == UsersGoals.goal_id,
+                            Goal.achieved == achieved,
+                            UsersGoals.user_id == Users.id,
+                        ).order_by(Goal.created_at.desc()).distinct().limit(6)
+        print(goals)
+        # goals = db.session.query(Goal) \
+        #     .filter(
+        #         Goal.achieved == achieved,
+        #     ) \
+        #     .order_by(Goal.id.desc()) \
+        #     .limit(6)
+
+        return render_template('metas.html', goals=goals, url=request.url)
 
 
     @login_required
-    @app.route('/api/goal/', methods=['GET', 'POST'])
+    @app.route('/api/metas/', methods=['GET', 'POST'])
     def create_goal():
         print(request.method)
         if request.method == 'POST':
@@ -317,7 +349,7 @@ def init_app(app):
 
         return render_template('criar_meta.html', form=form)
 
-    @app.route('/api/goal/<int:id>', methods=['GET', 'POST'])
+    @app.route('/api/meta/<int:id>', methods=['GET', 'POST'])
     @login_required
     def view_goal(id):
         goal = db.session.query(Goal, Users).filter(
@@ -326,7 +358,7 @@ def init_app(app):
 
         return render_template('meta.html', goals=goal)
 
-    @app.route('/api/atividade/<int:id>/editar', methods=['GET', 'POST'])
+    @app.route('/api/meta/<int:id>/editar', methods=['GET', 'POST'])
     @login_required
     def edit_goal(id):
         goals = db.session.query(Goal, Users).filter(
@@ -336,7 +368,7 @@ def init_app(app):
         # goal = get_task([goal.id for goal, user in goals][0])
 
 
-    @app.route('/api/atividade/<int:id>/deletar', methods=['DELETE', 'POST', 'GET'])
+    @app.route('/api/meta/<int:id>/deletar', methods=['DELETE', 'POST', 'GET'])
     @login_required
     def delete_goal(id):
         goal = Goal.query.filter(Goal.id == id).one_or_none() or None

@@ -8,4 +8,4 @@ class EditTaskForm(FlaskForm):
     user_id = SelectField("Responsável", coerce=int)
     achieved = SelectField("Concluído?", coerce=int)
     goal_id = SelectField("Meta relacionada", coerce=int)
-    submit = SubmitField('Criar atividade')
+    submit = SubmitField('Editar atividade')

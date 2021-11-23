@@ -14,7 +14,7 @@
         {% for task, user, goal in tasks %}
         <div class="card atividade_atual">
             <div class="cabecalho_card">
-                <a class="maior" href="{{ url_for('atividade', id=task.id) }}">{{ task.name }}</a>
+                <a class="maior" href="{{ url_for('atividade', id=task.id) }}">{{task.id}} - {{ task.name }}</a>
             </div>
             <div class="corpo_card">
                 <a class="menor">
@@ -35,11 +35,11 @@
         {% endfor %}
         {% if 'concluidas' not in url %}
         <a href="concluidas"><div class="botao botao_voltar">
-            <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_voltar"><a href="concluidas" class="botao">Ver concluídas</a>
+            <img src="{{ url_for('static', filename='icons/tick.png') }}" width="35" height="20" class="botao botao_voltar"><a href="concluidas" class="botao">Ver concluídas</a>
         </div></a>
         {% else %}
         <a href="{{ url_for('atividades') }}"><div class="botao botao_voltar">
-            <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_voltar"><a href="{{ url_for('atividades') }}" class="botao">Voltar</a>
+            <img src="{{ url_for('static', filename='icons/back.png') }}" class="botao botao_voltar"><a href="{{ url_for('atividades') }}" class="botao">Voltar</a>
         </div></a>
         {% endif %}
     

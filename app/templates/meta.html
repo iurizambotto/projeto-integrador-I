@@ -23,6 +23,9 @@
                     <hr>
                     Criado em: {{goal.created_at.strftime("%d/%m/%Y %H:%M:%S")}}
                     <br>
+                    <br>
+                    Concluído: {% if goal.achieved %} Sim {% else %} Não {% endif %}<br>
+                    {% if goal.achieved %}<br> Concluído em: {{goal.achieved_at.strftime("%d/%m/%Y %H:%M:%S")}} {% else %}{% endif %}<br>
                     <hr>
                     Responsável: {{user.name}}
                 </a><br>
@@ -42,4 +45,3 @@
     {% endfor %}
 
 {% endblock %}
-
