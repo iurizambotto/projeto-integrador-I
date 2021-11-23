@@ -41,9 +41,9 @@ def init_app(app):
         except:
             if not current_user.is_authenticated:
                 form = LoginForm()
-                print(form.validate_on_submit())
+
                 if form.validate_on_submit():
-                    print(form.validate_on_submit())
+
                     if user_login(form):
                         flash('Logado com {}'.format(
                             form.email.data))

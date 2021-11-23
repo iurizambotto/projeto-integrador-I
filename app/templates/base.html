@@ -14,7 +14,7 @@
         <div class="column nav_bar">
             <img src="{{ url_for('static', filename='icons/logo.png') }}" class="logo">
 
-            {% if not current_user.is_authenticated() %}
+            {% if not current_user.authenticated %}
             <p class="ainda_nao_possui_conta">Ainda não possui uma conta?</p>
             <a href="{{ url_for('create_user') }}"><div class="botao botao_criar_conta">
                 <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_criar_conta"><a href="{{ url_for('create_user') }}" class="botao">Criar uma conta</a>
