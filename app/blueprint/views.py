@@ -112,12 +112,13 @@ def init_app(app):
                 Task.achieved == False,
                 Task.user_id == Users.id,
             ).order_by(Task.created_at.desc()).limit(1)
-
+        
+        users = get_users_team(current_user.id)
+        users_id = [current_user.id] + [user.id for user_team, user in users]
         current_goal = db.session.query(Goal, UsersGoals, Users, UsersTeams).filter(
                 Goal.id == UsersGoals.goal_id,
                 Goal.achieved == False,
-                UsersGoals.user_id == Users.id,
-                Users.id == current_user.id
+                UsersGoals.user_id.in_(users_id),
             ).order_by(Goal.created_at.desc()).limit(1)
 
         tasks_pending = db.session.query(Task, Users).filter(
@@ -133,17 +134,15 @@ def init_app(app):
                 Task.user_id == Users.id,
             ).order_by(Task.created_at.desc()).count()
         
-        achieveds_goals = db.session.query(Goal, UsersGoals, Users, UsersTeams).filter(
+        achieveds_goals = db.session.query(Goal, UsersGoals).filter(
                 Goal.id == UsersGoals.goal_id,
                 Goal.achieved == True,
-                UsersTeams.manager_id == current_user.id,
-                UsersGoals.user_id == Users.id,
+                UsersGoals.user_id.in_(users_id),
             ).order_by(Goal.created_at.desc()).count()
 
-        total_goals = db.session.query(Goal, UsersGoals, Users, UsersTeams).filter(
+        total_goals = db.session.query(Goal, UsersGoals).filter(
                 Goal.id == UsersGoals.goal_id,
-                UsersTeams.manager_id == current_user.id,
-                UsersGoals.user_id == Users.id,
+                UsersGoals.user_id.in_(users_id),
             ).order_by(Goal.created_at.desc()).count() or 1
         
         pct_achieveds_goals = (achieveds_goals / total_goals) * 100
@@ -492,6 +491,7 @@ def init_app(app):
         dates = [[task.created_at, 1] for task, user in tasks]
         graph1 = None
         if dates:
+            print("dates", dates)
             dataframe = pd.DataFrame(dates, columns=["created_at", "counting"])
             dataframe['day'] = dataframe.created_at.dt.date
             
@@ -501,7 +501,7 @@ def init_app(app):
             # Generate the figure **without using pyplot**.
             fig = Figure()
             ax = fig.subplots()
-            ax.plot(grouped_dataframe.day, grouped_dataframe.counting)
+            ax.plot(grouped_dataframe.day.tolist(), grouped_dataframe.counting.tolist())
             ax.set_title("Atividades criadas por dia")
             # Save it to a temporary buffer.
             buf = BytesIO()
