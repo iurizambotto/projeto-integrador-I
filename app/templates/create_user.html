@@ -58,14 +58,15 @@
       {% endfor %}
       {% endif %}
       <br>
-
-      <label for="function"><b>Função</b></label>
-      {{ form.function() }}<br>
-      {% if form.function.errors %}
-      {% for error in form.function.errors %}
-      <span style="color: red;">[{{ error }}]</span><br>
+      
+      <label for="function"><b>Função</b></label><p>
+      {% for subfield in form.function %}
+      <tr>
+          <td>{{ subfield }}</td>
+          <td>{{ subfield.label }}</td>
+      </tr>
       {% endfor %}
-      {% endif %}
+      
       <br>
       <hr>
       {% with messages = get_flashed_messages() %}

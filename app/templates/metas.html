@@ -11,22 +11,23 @@
     </div></a>
     <div class="wrapper">
         
-        {% for goal, user_goal, user, user_team in goals %}
+        {% for goal in goals %}
         <div class="card atividade_atual">
             <div class="cabecalho_card">
-                <a class="maior" href="{{ url_for('view_goal', id=goal.id) }}">{{goal.id}} - {{ goal.name }}</a><br>
+                <a class="maior" href="{{ url_for('view_goal', id=goal[0]) }}">{{goal[0]}} - {{ goal[1] }}</a><br>
             </div>
             <div class="corpo_card">
                 <a class="menor">
-                    {{goal.description}}
+                    {{goal[2]}}
                     <br>
                     <br>
-                    Criado em: {{goal.created_at.strftime("%d/%m/%Y")}}
+                    Criado em: {{goal[3]}}
                     <br>
                     <br>
-                    Pronto? {{goal.achieved}}<br><br>
+                    Pronto? {% if goal[4] %}Sim {% else %}Não {% endif %}<br>
+                    {% if goal[4] %}<br> Concluído em: {{goal[5]}} {% else %}{% endif %}<br><br>
                     <hr>
-                    <a href="{{ url_for('view_goal', id=goal.id) }}">Ver meta</a>
+                    <a href="{{ url_for('view_goal', id=goal[0]) }}">Ver meta</a>
                 </a><br><br>
         </div>
     </div>
@@ -37,10 +38,10 @@
         </div></a>
         {% else %}
         <a href="{{ url_for('metas') }}"><div class="botao botao_voltar">
-            <img src="{{ url_for('static', filename='icons/back.png') }}" class="botao botao_voltar"><a href="{{ url_for('atividades') }}" class="botao">Voltar</a>
+            <img src="{{ url_for('static', filename='icons/back.png') }}" class="botao botao_voltar"><a href="{{ url_for('metas') }}" class="botao">Voltar</a>
         </div></a>
         {% endif %}
-    
+
 
 {% endblock %}
 

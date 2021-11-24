@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block style %}
-<link rel="stylesheet" href="{{ url_for('static', filename='create_user.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='editar_meta.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -9,7 +9,7 @@
 <form  action="" method="post" novalidate>
   {{ form.hidden_tag() }}
   <div class="imgcontainer">
-    <h1 class="logintitle">Nova atividade</h1>
+    <h1 class="logintitle">Editar atividade</h1>
   </div>
 
   {% for task, user in tasks %}

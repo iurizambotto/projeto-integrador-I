@@ -4,37 +4,34 @@ form {
 	border: 3px solid #f1f1f1;
     margin-left: auto;
     margin-right: auto;
-    width: 30%;
+    /* width: 16vw; */
+    text-align: center;
 }
 
 input[type=text], input[type=password], input[type=textarea] {
-  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
   padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
+  /* margin: 8px 0; */
+  display: block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  text-align: center;
 }
 
 input[type=submit] {
+  margin-left: auto;
+  margin-right: auto;
 	background-color: #FAE08E;
 	color: black;
 	padding: 14px 20px;
 	margin: 8px 0;
 	border: none;
 	cursor: pointer;
-	width: 100%;
+	width: 60%;
+  text-align: center;
   }
-
-
-select {
-  width: 100%;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
 
 .imgcontainer {
     text-align: center;

@@ -16,6 +16,21 @@ class Goal(db.Model):
     created_at = db.Column(db.DateTime(), nullable=False, default=datetime.now())
     updated_at = db.Column(db.DateTime(), nullable=False, default=datetime.now())
 
+    def __repr__(self) -> str:
+        return self.format()
+
+    def format(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'achieved': self.achieved or False,
+            'achieved_at': self.achieved_at,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            'created_by': self.created_by,
+        }
+
 class Task(db.Model):
     __tablename__ = 'tasks'
     id = db.Column(db.Integer, primary_key=True)

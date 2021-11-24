@@ -28,6 +28,16 @@ body {
   background-color: #EAEAEA;
 }
 
+ul.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+  top: 15%;
+}
+
+
 /* Clear floats after the columns */
   /* .row:after {
     content: "";
@@ -61,15 +71,12 @@ p.ainda_nao_possui_conta {
 
 /* TODOS BOTOES */
 div.botao {
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto; */
+  /* margin-right: auto; */
   display: block;
-  padding-left: 15px;
-  padding-top: 5px;
+  padding: 5px;
   border-style: solid;
   border-width: 1px;
-  height: 50px;
-  width: 80%;
   background: #FAE08E;
 }
 
@@ -79,20 +86,25 @@ div.botao:hover {
 }
 
 a.botao {
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 25%;
+  display: inline;
+  /* position: relative; */
+  padding: 10px;
+  /* top: 50%; */
+  /* left: 25%; */
   text-decoration: none;
   color: black;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 21px;
+  font-size: 1.2vw;
+  width: 10%;
+  /* font-size: 5%; */
+  /* font-family: Roboto; */
+  /* font-style: normal; */
+  /* font-weight: 50%; */
+  /* font-size: 18px; */
+  /* line-height: 21px; */
+  /* vertical-align: middle;
   align-items: center;
-  text-align: center;
-  margin: -5% 0 0 0;
+  text-align: center; */
+  /* margin: -5% 0 0 0; */
 }
 
 /* BOTOES SEPARADOS */
@@ -102,105 +114,10 @@ div.botao_criar_conta {
   top: 50%;
 }
 
-img.botao_criar_conta {
-  position: relative;
-  top: 10%;
-  line-height: 21px;
-  align-items: center;
-  text-align: center;
-}
-
-/*LOGADO*/
-div.botao_home {
-  display: block;
-  position: relative;
-  top: 15%;
-}
-
-img.botao_home {
-  position: relative;
-  top: 10%;
-  line-height: 21px;
-  align-items: center;
-  text-align: center;
-}
-
-div.botao_atividades {
-  position: relative;
-  top: 15%;
-}
-
-img.botao_atividades {
-  position: relative;
-  top: 10%;
-  line-height: 21px;
-  align-items: center;
-  text-align: center;
-}
-
-div.botao_metas {
-  position: relative;
-  top: 15%;
-}
-
-img.botao_metas {
-  position: relative;
-  top: 10%;
-  line-height: 21px;
-  align-items: center;
-  text-align: center;
-}
-
-div.botao_relatorios {
-  position: relative;
-  top: 15%;
-}
-
-img.botao_relatorios {
-  position: relative;
-  top: 10%;
-  line-height: 21px;
-  align-items: center;
-  text-align: center;
-}
-
-div.botao_meu_perfil {
-  position: relative;
-  top: 25%;
-}
-
-img.botao_meu_perfil {
-  position: relative;
-  top: 10%;
-  line-height: 21px;
-  align-items: center;
-  text-align: center;
-}
-
-div.botao_meu_time {
-  position: relative;
-  top: 25%;
-}
-
-img.botao_meu_time {
-  position: relative;
-  top: 10%;
-  line-height: 21px;
-  align-items: center;
-  text-align: center;
-}
-
-div.botao_sair {
-  position: relative;
-  top: 40%;
-}
-
-img.botao_sair {
-  position: relative;
-  top: 10%;
-  line-height: 21px;
-  align-items: center;
-  text-align: center;
+img.menu {
+  display: inline;
+  vertical-align: middle;
+  width: 15%;
 }
 
 /* CARDS */
@@ -213,7 +130,7 @@ img.botao_sair {
   margin-bottom: 10%;
   text-align: left;
   font-family: arial;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .cabecalho_card{

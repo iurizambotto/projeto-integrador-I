@@ -6,26 +6,12 @@
 
 {% block content %}
     <h1 class="titulo">Meu perfil</h1>
-
-    <h1>{{user.name}}</h1>
-    <!-- <h2>email: {{user.email}}</h2> -->
-    <!-- <age: {{user.age}}</h2> -->
-
-    <table>
-        <tr>
-          <td>E-mail</td>
-          <td>{{user.email}}</td>
-          <td></td>
-       </tr>
-       <tr>
-         <td>Cargo</td>
-         <td>{{user.role}}</td>
-       </tr>
-       <tr>
-         <td>Função</td>
-         <td>{{user.function}}</td>
-       </tr>
-      </table>
-      
-
+    <div class="wrapper">
+        <div class="meu_time">
+            <h2>Nome: {{user.name}}</h2>
+            <h3>Username: {{user.email}} | cargo: {{user.role}}</h3>
+            <h3>Usuário desde: {{user.created_at}}</h3>
+            <hr>
+        </div>
+    </div> 
 {% endblock %}

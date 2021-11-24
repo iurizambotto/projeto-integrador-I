@@ -11,7 +11,7 @@
     </div></a>
     <div class="wrapper">
         
-        {% for task, user, goal in tasks %}
+        {% for task in tasks %}
         <div class="card atividade_atual">
             <div class="cabecalho_card">
                 <a class="maior" href="{{ url_for('atividade', id=task.id) }}">{{task.id}} - {{ task.name }}</a>
@@ -21,10 +21,10 @@
                     {{task.description}}
                     <br>
                     <br>
-                    Criado em: {{task.created_at.strftime("%d/%m/%Y")}}
+                    Criado em: {{task.created_at}}
                     <br>
                     <hr>
-                    Responsável: {{user.name}}<br>
+                    Responsável: {{task.user_name}}<br>
                     <br>
                     {% if task.goal_id %}Meta relacionada: {{goal.name}} {% endif %}
                     <hr>

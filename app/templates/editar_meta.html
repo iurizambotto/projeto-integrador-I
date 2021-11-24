@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='editar_meta.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<form  action="" method="post" novalidate>
+  {{ form.hidden_tag() }}
+  <div class="imgcontainer">
+    <h1 class="logintitle">Editar meta</h1>
+  </div>
+
+  <div class="container">
+      <label for="email" ><b>Nome da atividade</b></label>
+      {{ form.name(value=goal.name) }}<br>
+      {% if form.name.errors %}
+      {% for error in form.name.errors %}
+      <span style="color: red;">[{{ error }}]</span><br>
+      {% endfor %}
+      {% endif %}
+      <br>
+      
+      <label for="description"><b>Descrição</b></label>
+      <textarea name="description" id="description" placeholder="Descreva a meta" cols="30" rows="5">{{goal.description}}</textarea><br>
+      {% if form.description.errors %}
+      {% for error in form.description.errors %}
+      <span style="color: red;">[{{ error }}]</span><br>
+      {% endfor %}
+      {% endif %}
+      <br>
+      <label for="username"><b>Responsável</b></label>
+      {{ form.users }}<br><br>
+      <label for="achieved"><b>Concluído?</b></label>
+      
+      {% if form.achieved %}
+      {{ form.achieved(value="Sim")}}
+      {% else %}
+      {{ form.achieved(value="Não")}}
+      {% endif %}
+      <br>
+      
+      {{ form.submit }}
+  </div>
+</form>
+{% endblock %}
+
+

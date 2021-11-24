@@ -1,48 +1,15 @@
 {% extends "base.html" %}
 
 {% block style %}
-<link rel="stylesheet" href="{{ url_for('static', filename='metas.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='relatorios.css') }}">
 {% endblock %}
 
 {% block content %}
     <h1 class="titulo">Relatórios</h1>
     <div class="wrapper">
-        <div class="card atividade_atual">
-            <div class="cabecalho_card">
-                <a class="maior">Atividade atual</a><br>
-            </div>
-            <div class="corpo_card">
-                <a class="maior"><br>Trabalhando em X coisa para fazer que fulano tenha sucesso na atividade</a><br><br>
-        </div>
-        </div>
-        <div class="card meta_atual">
-            <div class="cabecalho_card">
-                <a class="maior">Meta atual</a><br>
-            </div>
-            <div class="corpo_card">
-                <a class="maior"><br>Ter 50% de redução de custos nos próximos 2 meses</a><br><br>
-        </div>
-        </div>
-        <div class="card">
-            <div class="cabecalho_card">
-                <a class="maior">Atividades</a><br>
-            </div>
-            <div class="corpo_card">
-                <span class="numero">3
-                <a><br>Pendentes</a></span><br>
-                <span class="numero">2
-                <a><br>Concluídas hoje</a></span>
-        </div><br>
-        </div>
-        <div class="card">
-            <div class="cabecalho_card">
-                <a class="maior">Metas</a><br>
-            </div>
-            <div class="corpo_card"><br>
-                <span class="numero">75%
-                <a><br>Atingidas</a></span>
-        </div>
-        </div>
+        
+    <img src='data:image/png;base64,{{ graph1 }}' class="relatorio"/>
+
     </div>
 {% endblock %}
 

@@ -11,7 +11,7 @@
     </div></a>
     <div class="wrapper">
 
-        {% for goal, user in goals %}
+        {% for goal in goals %}
         <div class="card atividade_atual">
             <div class="cabecalho_card">
                 <a class="maior">{{ goal.name }}</a>
@@ -27,12 +27,12 @@
                     Concluído: {% if goal.achieved %} Sim {% else %} Não {% endif %}<br>
                     {% if goal.achieved %}<br> Concluído em: {{goal.achieved_at.strftime("%d/%m/%Y %H:%M:%S")}} {% else %}{% endif %}<br>
                     <hr>
-                    Responsável: {{user.name}}
+                    Responsáveis: {{users}}
                 </a><br>
         </div>
     </div>
     {% endfor %}
-    {% for goal, user in goals %}
+    {% for goal in goals %}
     <a href="{{ url_for('delete_goal', id=goal.id) }}"><div class="botao botao_deletar" onclick="return confirm('Tem certeza que deseja deletar?')">
         <img src="{{ url_for('static', filename='icons/add-account.png') }}" class="botao botao_deletar"><a href="{{ url_for('delete_goal', id=goal.id) }}" class="botao">Excluir</a>
     </div></a>
