@@ -536,7 +536,8 @@ def init_app(app):
             ).all()
             
             users = manager + get_users_team(manager_id[0])
-            users = list(set([(user.name, user.email, user.role) for user_team, user in users]))
+        
+        users = list(set([(user.name, user.email, user.role) for user_team, user in users]))
 
         return render_template("team.html", users=users, is_manager=is_manager)
     
