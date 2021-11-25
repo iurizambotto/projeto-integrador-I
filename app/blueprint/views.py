@@ -66,7 +66,7 @@ def init_app(app):
                     else:
                         flash('Usuário ou senha inválidos')
             else:
-                return redirect(url_for('get_login'))
+                return redirect(url_for('homepage'))
 
         return render_template('login.html', title='Entrar', form=form)
 
