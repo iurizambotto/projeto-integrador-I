@@ -8,8 +8,17 @@
     <h1 class="titulo">Relatórios</h1>
     <div class="wrapper">
         
-    <img src='data:image/png;base64,{{ graph1 }}' class="relatorio"/>
+    <div>    <h2>Atividades criadas por dia</h2>
 
+    <img src='data:image/png;base64,{{ graph1 }}' class="relatorio_criadas"/>
+    </div>
+    <br>
+    <p>
+    </p>
+    <div>
+    <h2>Atividades concluídas por dia</h2>
+    <img src='data:image/png;base64,{{ graph2 }}' class="relatorio_concluidas"/>
+    </div>
     </div>
 {% endblock %}
 

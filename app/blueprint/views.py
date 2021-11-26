@@ -489,6 +489,8 @@ def init_app(app):
             ).order_by(Task.created_at.desc()).all()
         
         dates = [[task.created_at, 1] for task, user in tasks]
+        dates_achieved = [[task.created_at, 1] for task, user in tasks if task.achieved == 1]
+        
         graph1 = None
         if dates:
             print("dates", dates)
@@ -501,8 +503,8 @@ def init_app(app):
             # Generate the figure **without using pyplot**.
             fig = Figure()
             ax = fig.subplots()
-            ax.plot(grouped_dataframe.day.tolist(), grouped_dataframe.counting.tolist())
-            ax.set_title("Atividades criadas por dia")
+            ax.bar(grouped_dataframe.day.tolist(), grouped_dataframe.counting.tolist())
+            # ax.set_title("Atividades criadas por dia")
             # Save it to a temporary buffer.
             buf = BytesIO()
             fig.savefig(buf, format="png")
@@ -510,9 +512,29 @@ def init_app(app):
             # Embed the result in the html output.
             graph1 = base64.b64encode(buf.getbuffer()).decode("ascii")
 
-                    # Task.achieved == False,
+        graph2 = None
+        if dates_achieved:
+            print("dates", dates_achieved)
+            dataframe = pd.DataFrame(dates_achieved, columns=["created_at", "counting"])
+            dataframe['day'] = dataframe.created_at.dt.date
+            
+            grouped_dataframe_1 = dataframe.groupby("day").sum().counting.reset_index()
+            print(grouped_dataframe_1)
+            
+            # Generate the figure **without using pyplot**.
+            fig1 = Figure()
+            ax1 = fig1.subplots()
+            ax1.bar(grouped_dataframe_1.day.tolist(), grouped_dataframe_1.counting.tolist())
+            # ax1.set_title("Atividades concluídas por dia")
+            # Save it to a temporary buffer.
+            buf1 = BytesIO()
+            fig1.savefig(buf1, format="png")
 
-        return render_template('relatorios.html', graph1=graph1)
+            # Embed the result in the html output.
+            graph2 = base64.b64encode(buf1.getbuffer()).decode("ascii")
+
+
+        return render_template('relatorios.html', graph1=graph1, graph2=graph2)
 
     @app.route('/api/my_team/', methods=['GET', 'POST'])
     @login_required
