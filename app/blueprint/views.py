@@ -95,7 +95,7 @@ def init_app(app):
         
         return render_template('create_user.html', title='Criar usuário', form=form)
 
-    @app.route('/api/my_profile/', methods=['GET', 'POST'])
+    @app.route('/api/meu_perfil/', methods=['GET', 'POST'])
     @login_required
     def my_profile():
 
@@ -536,7 +536,7 @@ def init_app(app):
 
         return render_template('relatorios.html', graph1=graph1, graph2=graph2)
 
-    @app.route('/api/my_team/', methods=['GET', 'POST'])
+    @app.route('/api/meu_time/', methods=['GET', 'POST'])
     @login_required
     def my_team():
         users = get_users_team(current_user.id)
@@ -563,7 +563,7 @@ def init_app(app):
 
         return render_template("team.html", users=users, is_manager=is_manager)
     
-    @app.route('/api/relationship/', methods=['GET', 'POST'])
+    @app.route('/api/relacionamento/', methods=['GET', 'POST'])
     @login_required
     def create_new_relationship():
         form = CreateNewRelationshipForm()
@@ -599,73 +599,3 @@ def init_app(app):
         db.session.add(user)
         db.session.commit()
    
-    @app.route("/teste/")
-    def hello():
-        data = []
-
-        tasks = db.session.query(Task, Users).filter(
-                Task.user_id == current_user.id,
-                Task.user_id == Users.id,
-            ).order_by(Task.created_at.desc()).all()
-        
-        
-        dates = [[task.created_at, 1] for task, user in tasks]
-        # goals = [1 for task, user in tasks for date in dates if task.created_at == date]
-
-        dataframe = pd.DataFrame(dates, columns=["created_at", "counting"])
-        dataframe['day'] = dataframe.created_at.dt.date
-        
-        grouped_dataframe = dataframe.groupby("day").sum().counting.reset_index()
-        print(grouped_dataframe)
-        
-        # Generate the figure **without using pyplot**.
-        fig = Figure()
-        ax = fig.subplots()
-        ax.plot(grouped_dataframe.day, grouped_dataframe.counting)
-        ax.set_title("Atividades criadas por dia")
-        # Save it to a temporary buffer.
-        buf = BytesIO()
-        fig.savefig(buf, format="png")
-        # Embed the result in the html output.
-        data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return f"<img src='data:image/png;base64,{data}'/>"
-
-    # @app.route('/api/users/<int:id>', methods=['PATCH'])
-    # def update_user(id):
-    #     content = request.json
-    #     print(content['name'])
-    #     user = Users.query.filter(Users.id == id).one_or_none()
-    #     print(user)
-    #     user.name = content['name']
-    #     db.session.commit()
-    #     print(user.format())
-    #     return jsonify({"User": user.format()})
-
-
-    # @app.route('/api/users/all/', methods=['DELETE'])
-    # def delete_all():
-    #     users = Users.query.order_by(Users.id).all()
-
-    #     if len(users) == 0:
-    #         abort(404)
-        
-    #     users = delete_all()
-
-    #     return jsonify({
-    #         'success': True,
-    #         'users': users
-    #     })
-
-    # @app.route('/api/users/<int:id>', methods=['DELETE'])
-    # def delete_user(id): 
-        
-    #     user = delete_user(id)
-
-    #     if not user:
-    #         abort(404)
-            
-    #     return jsonify({
-    #         'success': True,
-    #         'user': user
-    #     })
-
