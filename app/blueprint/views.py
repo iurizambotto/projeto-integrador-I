@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from flask.helpers import url_for
 from app.forms.login_form import LoginForm
 from app.extensions.database import db
-from flask import request, jsonify, render_template, abort, flash, redirect, url_for
+from flask import request, render_template, abort, flash, redirect, url_for
 from flask_login import login_required, current_user
 from app.models.tables import Users, Goal, Task, UsersTeams, UsersGoals
 from app.forms.login_form import LoginForm
@@ -80,7 +80,6 @@ def init_app(app):
     @app.route('/api/criar_conta/', methods=['GET', 'POST'])
     def create_user():
         form = CreateUserForm()
-        print(form)
         if form.validate_on_submit():
             try:
                 user = Users.query.filter(Users.email == form.email.data).one_or_none() or None
@@ -182,7 +181,6 @@ def init_app(app):
         """)
         
         tasks = [task for task in tasks]
-        print(tasks)
 
         # tasks = db.session \
         #     .query(Task, Users, Goal) \
@@ -272,14 +270,6 @@ def init_app(app):
         form.user_id.choices += [(user.id, user.name) for user_team, user in users]
         form.achieved.choices = [(0, "Não"), (1, "Sim")]
 
-        # users = get_users_team(current_user.id)
-        # users_id = [user.id for user_team, user in users]
-        # users_goals = db.session.query(UsersGoals, Goal).filter(
-        #     Goal.id == UsersGoals.goal_id
-        # ).filter(UsersGoals.user_id.in_(users_id)).all()
-
-        # form.goal_id.choices = list(set((goal.id, goal.name) for user_goal, goal in users_goals))
-        # print(form.goal_id.choices)
         users_team = db.session.query(UsersTeams).filter(
                 UsersTeams.manager_id == current_user.id,
             )
@@ -300,7 +290,6 @@ def init_app(app):
         form.goal_id.choices = [goal for goal in goals]
 
         if form.validate_on_submit():
-            print(form.data)
             task.name = form.name.data
             task.description = form.description.data
             task.user_id = form.user_id.data
@@ -311,7 +300,6 @@ def init_app(app):
                 task.achieved_at = datetime.now()
 
             db.session.commit()
-            print(task.id, task.name, task.description, task.achieved, task.format())
             return redirect(url_for('atividades'))
 
         return render_template('editar_atividade.html', form=form, tasks=tasks)
@@ -334,7 +322,6 @@ def init_app(app):
 
         if 'concluidas' in request.url:
             achieved = 1
-            print(achieved)
 
         # SEPARAR SE OS CARAS SAO GESTORES OU NAO PARA FILTRAR AS METAS DE CADA UM (GESTOR VE DO TIME TODO)
         users_team = db.session.query(UsersTeams).filter(
@@ -360,15 +347,10 @@ def init_app(app):
     @login_required
     @app.route('/api/meta/', methods=['GET', 'POST'])
     def create_goal():
-        print(request.method)
-        if request.method == 'POST':
-            print("forms", request.form.getlist("users"))
-
         form = CreateGoalForm()
         users = get_users_team(current_user.id)
         form.users.choices = [(current_user.id, current_user.name)] + [(user.id, user.name) for user_team, user in users]
         
-        print(form.validate(), form.data, form.errors, form.submit())
         if form.validate_on_submit():
 
             goal_content = {
@@ -441,19 +423,14 @@ def init_app(app):
         
         form.achieved.choices = [(0, "Não"), (1, "Sim")]
         
-        print(form.errors, form.validate(), form.validate_on_submit())
         if form.validate_on_submit():
-            print("validade")
-            print(type(form.achieved.data))
             goal.name = form.name.data
             goal.description = form.description.data
             goal.achieved = int(form.achieved.data)
             goal.updated_at = datetime.now()
-            print(goal.achieved)
             if goal.achieved:
                 goal.achieved_at = datetime.now()
             db.session.commit()
-            print(goal.name, goal.description, goal.achieved, goal.format())
 
             # for user_id in form.data['users']:
             #     users_goal_content = {
@@ -493,12 +470,10 @@ def init_app(app):
         
         graph1 = None
         if dates:
-            print("dates", dates)
             dataframe = pd.DataFrame(dates, columns=["created_at", "counting"])
             dataframe['day'] = dataframe.created_at.dt.date
             
             grouped_dataframe = dataframe.groupby("day").sum().counting.reset_index()
-            print(grouped_dataframe)
             
             # Generate the figure **without using pyplot**.
             fig = Figure()
@@ -514,12 +489,10 @@ def init_app(app):
 
         graph2 = None
         if dates_achieved:
-            print("dates", dates_achieved)
             dataframe = pd.DataFrame(dates_achieved, columns=["created_at", "counting"])
             dataframe['day'] = dataframe.created_at.dt.date
             
             grouped_dataframe_1 = dataframe.groupby("day").sum().counting.reset_index()
-            print(grouped_dataframe_1)
             
             # Generate the figure **without using pyplot**.
             fig1 = Figure()
@@ -550,7 +523,6 @@ def init_app(app):
                 WHERE employee_id = {current_user.id}
             """)
             manager_id = [id for id in manager_id][0]
-            print(manager_id)
 
             manager = db.session.query(UsersTeams, Users).filter(
                 manager_id[0] == UsersTeams.manager_id,
@@ -579,7 +551,6 @@ def init_app(app):
         form.user_id.choices = [(id, name) for id, name in users]
 
         if form.validate_on_submit():
-            print(form)
             user_team_content = {
                 "manager_id": current_user.id,
                 "employee_id": form.user_id.data,
