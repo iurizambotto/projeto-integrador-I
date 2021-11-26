@@ -70,14 +70,14 @@ def init_app(app):
 
         return render_template('login.html', title='Entrar', form=form)
 
-    @app.route('/api/logout')
+    @app.route('/api/logout/')
     @login_required
     def get_logout():
         logout_user
         user_logout()
         return redirect(url_for('get_login'))
 
-    @app.route('/api/user/', methods=['GET', 'POST'])
+    @app.route('/api/criar_conta/', methods=['GET', 'POST'])
     def create_user():
         form = CreateUserForm()
         print(form)
