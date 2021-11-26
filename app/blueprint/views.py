@@ -522,15 +522,20 @@ def init_app(app):
                 LEFT JOIN users on users.id = users_team.manager_id
                 WHERE employee_id = {current_user.id}
             """)
-            manager_id = [id for id in manager_id][0]
-
-            manager = db.session.query(UsersTeams, Users).filter(
-                manager_id[0] == UsersTeams.manager_id,
-                Users.id == UsersTeams.manager_id
-            ).all()
+            if manager_id:
+                manager_id = [id for id in manager_id][0]
+                manager = db.session.query(UsersTeams, Users).filter(
+                    manager_id[0] == UsersTeams.manager_id,
+                    Users.id == UsersTeams.manager_id
+                ).all()
+                
+                users = manager + get_users_team(manager_id[0])
+            else:
+                employee = db.session.query(UsersTeams, Users).filter(
+                    Users.id == UsersTeams.employee_id,
+                    Users.id == current_user.id
+                ).all()
             
-            users = manager + get_users_team(manager_id[0])
-        
         users = list(set([(user.name, user.email, user.role) for user_team, user in users]))
 
         return render_template("team.html", users=users, is_manager=is_manager)
